@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="findahomeApp">
  <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
    <!-- STYLESHEETS -->
    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
-   <link rel="stylesheet" href="/styles/styles.css">
+   <link rel="stylesheet" href="/styles/style.css">
 
    <!-- VENDOR SCRIPTS -->
    <script src="/vendor/angular/angular.min.js"></script>
@@ -17,6 +17,7 @@
 
    <!-- APPLICATION SCRIPTS -->
    <script src="/scripts/app.js"></script>
+   <script src="/scripts/controllers/ListingsIndexController.js"></script>
 
  </head>
  <body>
@@ -26,5 +27,6 @@
        <p>Your binder for affordable housing listings</p>
      </div>
    </div>
-</body>
+   <div ng-view></div>
+
 </html>

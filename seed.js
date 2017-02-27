@@ -1,10 +1,10 @@
 var db = require("./models");
 
-var Listings =[];
-Listings.push({
-  Type: 'Apartment',
-  Bedrooms: 2,
-  Bathrooms: 1.0,
+var allListings =[];
+allListings.push({
+  type: 'Apartment',
+  bedrooms: 2,
+  bathrooms: 1.0,
   leaseLength: 'One Year',
   squareFeet: '1,015',
   parkingType: 'Garage',
@@ -17,27 +17,27 @@ Listings.push({
   propertyContactPhoneNumber: '408-993-9119',
   propertyContactEmail: 'dp-manager@eahhousing.org',
   propertyContactWebsite: 'http://delmasparkapartments.rentaladdress.com/',
-  speakSpanish: true,
-  speakVietnamese: false,
-  acceptsSection8: true,
-  taxCreditProperty: true,
-  subsidizedRentOk: false,
-  seniorsOnly: false,
-  cats: false,
-  dogs: false,
+  speakSpanish: 'Yes',
+  speakVietnamese: 'No',
+  acceptsSection8: 'Yes',
+  taxCreditProperty: 'Yes',
+  subsidizedRentOk: 'No',
+  seniorsOnly: 'No',
+  cats: 'No',
+  dogs: 'No',
   securityDeposit: '$700',
   applicationFee: '$30 per adult',
   dateAvailable: 'Waiting List',
   image: 'http://www.delmasparkapts.com/properties/1729/property_photos/20347/S_450_WIDTH_extension_jpg_q_90__v2_Delmas_Park1_final_JPG.jpg',
-  incomeBasedRent: true,
+  incomeBasedRent: 'Yes',
   rentAmount: '$0 - $1,499',
   latitude: 37.3242903,
   longitude: -121.89968379999999
 });
-Listings.push({
-  Type: 'Studio',
-  Bedrooms: 0,
-  Bathrooms: 1.0,
+allListings.push({
+  type: 'Studio',
+  bedrooms: 0,
+  bathrooms: 1.0,
   leaseLength: 'One Year',
   squareFeet: '625',
   parkingType: 'Garage',
@@ -50,27 +50,27 @@ Listings.push({
   propertyContactPhoneNumber: '408-993-9119',
   propertyContactEmail: 'dp-manager@eahhousing.org',
   propertyContactWebsite: 'http://delmasparkapartments.rentaladdress.com/',
-  speakSpanish: true,
-  speakVietnamese: false,
-  acceptsSection8: true,
-  taxCreditProperty: true,
-  subsidizedRentOk: false,
-  seniorsOnly: false,
-  cats: false,
-  dogs: false,
+  speakSpanish: 'Yes',
+  speakVietnamese: 'No',
+  acceptsSection8: 'Yes',
+  taxCreditProperty: 'Yes',
+  subsidizedRentOk: 'No',
+  seniorsOnly: 'No',
+  cats: 'No',
+  dogs: 'No',
   securityDeposit: '$500',
   applicationFee: '$30 per adult',
   dateAvailable: 'Waiting List',
   image: 'http://www.delmasparkapts.com/properties/1729/property_photos/20347/S_450_WIDTH_extension_jpg_q_90__v2_Delmas_Park1_final_JPG.jpg',
-  incomeBasedRent: true,
+  incomeBasedRent: 'Yes',
   rentAmount: '$0 - $979',
   latitude: 37.3242903,
   longitude: -121.89968379999999
 });
-Listings.push({
-  Type: 'Apartment',
-  Bedrooms: 1,
-  Bathrooms: 1.0,
+allListings.push({
+  type: 'Apartment',
+  bedrooms: 1,
+  bathrooms: 1.0,
   leaseLength: 'One Year',
   squareFeet: '715',
   parkingType: 'Garage',
@@ -83,27 +83,27 @@ Listings.push({
   propertyContactPhoneNumber: '408-292-4600',
   propertyContactEmail: 'villatorre@caremgt.com',
   propertyContactWebsite: 'http://www.caremgt.com/',
-  speakSpanish: false,
-  speakVietnamese: false,
-  acceptsSection8: true,
-  taxCreditProperty: false,
-  subsidizedRentOk: false,
-  seniorsOnly: false,
-  cats: false,
-  dogs: false,
+  speakSpanish: 'No',
+  speakVietnamese: 'No',
+  acceptsSection8: 'Yes',
+  taxCreditProperty: 'No',
+  subsidizedRentOk: 'No',
+  seniorsOnly: 'No',
+  cats: 'No',
+  dogs: 'No',
   securityDeposit: '$1,232',
   applicationFee: '$33 per adult',
   dateAvailable: 'Waiting List',
   image: 'http://www.caremgt.com/images/communities/villa_torre/photo_6.jpg',
-  incomeBasedRent: false,
+  incomeBasedRent: 'No',
   rentAmount: '$1,232',
   latitude: 37.3245349,
   longitude: -121.87495030000002
 });
-Listings.push({
-  Type: 'Apartment',
-  Bedrooms: 1,
-  Bathrooms: 1.0,
+allListings.push({
+  type: 'Apartment',
+  bedrooms: 1,
+  bathrooms: 1.0,
   leaseLength: 'One Year',
   squareFeet: 'N/A',
   parkingType: 'Garage',
@@ -116,27 +116,27 @@ Listings.push({
   propertyContactPhoneNumber: '408-263-8484',
   propertyContactEmail: 'bnp-manager@eahhousing.org',
   propertyContactWebsite: 'http://eahhousing.org',
-  speakSpanish: true,
-  speakVietnamese: true,
-  acceptsSection8: true,
-  taxCreditProperty: true,
-  subsidizedRentOk: false,
-  seniorsOnly: true,
-  cats: true,
-  dogs: true,
+  speakSpanish: 'Yes',
+  speakVietnamese: 'Yes',
+  acceptsSection8: 'Yes',
+  taxCreditProperty: 'Yes',
+  subsidizedRentOk: 'No',
+  seniorsOnly: 'Yes',
+  cats: 'Yes',
+  dogs: 'Yes',
   securityDeposit: '$500',
   applicationFee: '$46 per adult',
   dateAvailable: 'Waiting List',
   image: 'https://eahhousing.blob.core.windows.net/assets/BNP_LivingRoom_2012WEB.jpg',
-  incomeBasedRent: false,
+  incomeBasedRent: 'No',
   rentAmount: '$1,002',
   latitude: 37.3665838,
   longitude: -121.867343
 });
-Listings.push({
-  Type: 'Apartment',
-  Bedrooms: 0,
-  Bathrooms: 1.0,
+allListings.push({
+  type: 'Apartment',
+  bedrooms: 0,
+  bathrooms: 1.0,
   leaseLength: 'One Year',
   squareFeet: '476',
   parkingType: 'Off street',
@@ -149,32 +149,33 @@ Listings.push({
   propertyContactPhoneNumber: '408-937-0794',
   propertyContactEmail: 'No Email',
   propertyContactWebsite: 'www.edenhousing.org',
-  speakSpanish: false,
-  speakVietnamese: false,
-  acceptsSection8: false,
-  taxCreditProperty: false,
-  subsidizedRentOk: false,
-  seniorsOnly: false,
-  cats: false,
-  dogs: false,
+  speakSpanish: 'No',
+  speakVietnamese: 'No',
+  acceptsSection8: 'No',
+  taxCreditProperty: 'No',
+  subsidizedRentOk: 'No',
+  seniorsOnly: 'No',
+  cats: 'No',
+  dogs: 'No',
   securityDeposit: '$810',
   applicationFee: 'None',
   dateAvailable: 'Waiting List',
   image: 'http://www.socialserve.com/WebFile?id=662967',
-  incomeBasedRent: true,
+  incomeBasedRent: 'Yes',
   rentAmount: '$0 - $810',
   latitude: 37.3721286,
   longitude: -121.8735691
 });
-// populate eaching listing
-Listings.forEach(function(listings) {
-  db.Listing.remove({}, function(err, listings){
-    db.Listing.create(listings, function(err, listings){
-      if (err) { return console.log('ERROR', err); }
-      console.log("all listings:", listings);
-      console.log("created", listings.length, "listings");
-      process.exit();
-    });
 
+// populate eaching listing
+
+db.Listing.remove({}, function(err, listings){
+
+  db.Listing.create(allListings, function(err, listings){
+    if (err) { return console.log('ERROR', err); }
+    console.log("all listings:", listings);
+    console.log("created", listings.length, "listings");
+    process.exit();
   });
+
 });
