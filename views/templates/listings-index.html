@@ -1,155 +1,200 @@
 <div class="container">
+  <form class="form-horizontal" ng-submit="listingsIndexCtrl.createListing()">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Add New Listing</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Listing Name</label>
+        <div class="col-md-4">
+        <input id="listingName" ng-model="listingsIndexCtrl.newListing.listingName" type="text" class="form-control input-md" required="">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Address</label>
+        <div class="col-md-4">
+        <input ng-model="listingsIndexCtrl.newListing.address" type="text" class="form-control input-md">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Rent Amount</label>
+        <div class="col-md-4">
+        <input ng-model="listingsIndexCtrl.newListing.rentAmount" type="text" class="form-control input-md">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Date Available:</label>
+        <div class="col-md-4">
+        <input ng-model="listingsIndexCtrl.newListing.dateAvailable" type="text" class="form-control input-md">
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <button class="btn btn-primary">Save Listing</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <label class="col-md-4 control-label"><p class="strong">Search Listings:</p><input type="text" class="form-control" ng-model="searchText"></label>
+  <div ng-repeat="listing in listingsIndexCtrl.listings | orderBy: listingName | filter: searchText" class="row">
+    <br>
     <div class="col-md-10 col-md-offset-1">
-      <div class="row">
-      <input type="text" class="form-control" ng-model="searchText" placeholder="Search Listings">
-      <div ng-repeat="listing in listingsIndexCtrl.listings | orderBy: 'listingName' | filter: searchText" class="row">
-        <br>
-        <div class="col-md-10 col-md-offset-1">
-          <div class="panel panel-default">
-            <div class="panel-body">
+      <div class="panel panel-default">
 
-              <div class='row'>
-                <div class="col-md-3 col-xs-12 thumbnail">
-                  <img ng-src="{{listing.image}}" alt="listing image">
-                </div>
+        <div class="panel-body">
+          <div class='row'>
+            <div class="col-md-3 col-xs-12 thumbnail">
+              <img ng-src="{{listing.image}}" alt="listing image">
+            </div>
 
-                <div class="col-md-9 col-xs-12">
-                  <ul class="list-group form-inline">
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Listing Name:</h4>
-                      <span ng-hide="editing"><a ng-href="listings/{{listing._id}}">{{listing.listingName}}</a></span>
-                      <input ng-show="editing" ng-model="listing.listingName" type="text" class="form-control input-md">
-                    </li>
+            <div class="col-md-9 col-xs-12">
+              <ul class="list-group form-inline">
+                <li class="list-group-item">
+                  <h4 class="inline-header">Listing Name:</h4>
+                  <span ng-hide="editing"><a ng-href="listings/{{listing._id}}">{{listing.listingName}}</a></span>
+                  <input ng-show="editing" ng-model="listing.listingName" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Address:</h4>
-                      <span ng-hide="editing">{{listing.address}}</span>
-                      <input ng-show="editing" ng-model="listing.address" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Address:</h4>
+                  <span ng-hide="editing">{{listing.address}}</span>
+                  <input ng-show="editing" ng-model="listing.address" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Bedrooms:</h4>
-                      <span ng-hide="editing">{{listing.bedrooms}}</span>
-                      <input ng-show="editing" ng-model="listing.bedrooms" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Bedrooms:</h4>
+                  <span ng-hide="editing">{{listing.bedrooms}}</span>
+                  <input ng-show="editing" ng-model="listing.bedrooms" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Bathrooms:</h4>
-                      <span ng-hide="editing">{{listing.bathrooms}}</span>
-                      <input ng-show="editing" ng-model="listing.bathrooms" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Bathrooms:</h4>
+                  <span ng-hide="editing">{{listing.bathrooms}}</span>
+                  <input ng-show="editing" ng-model="listing.bathrooms" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Square Feet:</h4>
-                      <span ng-hide="editing">{{listing.squareFeet}} sq. ft. </span>
-                      <input ng-show="editing" ng-model="listing.squareFeet" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Square Feet:</h4>
+                  <span ng-hide="editing">{{listing.squareFeet}} sq. ft. </span>
+                  <input ng-show="editing" ng-model="listing.squareFeet" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Released date:</h4>
-                      <span ng-hide="editing">{{listing.rentAmount}}</span>
-                      <input ng-show="editing" ng-model="listing.rentAmount" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Rent Amount:</h4>
+                  <span ng-hide="editing">{{listing.rentAmount}}</span>
+                  <input ng-show="editing" ng-model="listing.rentAmount" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Date Available:</h4>
-                      <span ng-hide="editing">{{listing.dataAvailable}}</span>
-                      <input ng-show="editing" ng-model="listing.dataAvailable" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Date Available:</h4>
+                  <span ng-hide="editing">{{listing.dateAvailable}}</span>
+                  <input ng-show="editing" ng-model="listing.dateAvailable" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Lease Length:</h4>
-                      <span ng-hide="editing">{{listing.leaseLength}}</span>
-                      <input ng-show="editing" ng-model="listing.leaseLength" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Lease Length:</h4>
+                  <span ng-hide="editing">{{listing.leaseLength}}</span>
+                  <input ng-show="editing" ng-model="listing.leaseLength" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Accepts Section 8?</h4>
-                      <span ng-hide="editing">{{listing.acceptsSection8}}</span>
-                      <input ng-show="editing" ng-model="listing.acceptsSection8" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Accepts Section 8?</h4>
+                  <span ng-hide="editing">{{listing.acceptsSection8}}</span>
+                  <input ng-show="editing" ng-model="listing.acceptsSection8" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Seniors Only?</h4>
-                      <span ng-hide="editing">{{listing.seniorsOnly}}</span>
-                      <input ng-show="editing" ng-model="listing.seniorsOnly" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Seniors Only?</h4>
+                  <span ng-hide="editing">{{listing.seniorsOnly}}</span>
+                  <input ng-show="editing" ng-model="listing.seniorsOnly" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Application Fee:</h4>
-                      <span ng-hide="editing">{{listing.applicationFee}}</span>
-                      <input ng-show="editing" ng-model="listing.applicationFee" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Application Fee:</h4>
+                  <span ng-hide="editing">{{listing.applicationFee}}</span>
+                  <input ng-show="editing" ng-model="listing.applicationFee" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Security Deposit:</h4>
-                      <span ng-hide="editing">{{listing.securityDeposit}}</span>
-                      <input ng-show="editing" ng-model="listing.securityDeposit" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Security Deposit:</h4>
+                  <span ng-hide="editing">{{listing.securityDeposit}}</span>
+                  <input ng-show="editing" ng-model="listing.securityDeposit" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Dogs Allowed?</h4>
-                      <span ng-hide="editing">{{listing.dogs}}</span>
-                      <input ng-show="editing" ng-model="listing.dogs" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Dogs Allowed?</h4>
+                  <span ng-hide="editing">{{listing.dogs}}</span>
+                  <input ng-show="editing" ng-model="listing.dogs" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Cats Allowed?</h4>
-                      <span ng-hide="editing">{{listing.cats}}</span>
-                      <input ng-show="editing" ng-model="listing.cats" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Cats Allowed?</h4>
+                  <span ng-hide="editing">{{listing.cats}}</span>
+                  <input ng-show="editing" ng-model="listing.cats" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Contact:</h4>
-                      <span ng-hide="editing">{{listing.propertyContactName}}</span>
-                      <input ng-show="editing" ng-model="listing.propertyContactName" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Contact:</h4>
+                  <span ng-hide="editing">{{listing.propertyContactName}}</span>
+                  <input ng-show="editing" ng-model="listing.propertyContactName" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Phone Number:</h4>
-                      <span ng-hide="editing">{{listing.propertyContactPhoneNumber}}</span>
-                      <input ng-show="editing" ng-model="listing.propertyContactPhoneNumber" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Phone Number:</h4>
+                  <span ng-hide="editing">{{listing.propertyContactPhoneNumber}}</span>
+                  <input ng-show="editing" ng-model="listing.propertyContactPhoneNumber" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Hablamas Español?</h4>
-                      <span ng-hide="editing">{{listing.speakSpanish}}</span>
-                      <input ng-show="editing" ng-model="listing.speakSpanish" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Hablamas Español?</h4>
+                  <span ng-hide="editing">{{listing.speakSpanish}}</span>
+                  <input ng-show="editing" ng-model="listing.speakSpanish" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Speak Vietnamese??</h4>
-                      <span ng-hide="editing">{{listing.speakVietnamese}}</span>
-                      <input ng-show="editing" ng-model="listing.speakVietnamese" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Speak Vietnamese??</h4>
+                  <span ng-hide="editing">{{listing.speakVietnamese}}</span>
+                  <input ng-show="editing" ng-model="listing.speakVietnamese" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Email:</h4>
-                      <span ng-hide="editing">{{listing.propertyContactEmail}}</span>
-                      <input ng-show="editing" ng-model="listing.propertyContactEmail" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Email:</h4>
+                  <span ng-hide="editing">{{listing.propertyContactEmail}}</span>
+                  <input ng-show="editing" ng-model="listing.propertyContactEmail" type="text" class="form-control input-md">
+                </li>
 
-                    <li class="list-group-item">
-                      <h4 class='inline-header'>Website:</h4>
-                      <span ng-hide="editing">{{listing.propertyContactWebsite}}</span>
-                      <input ng-show="editing" ng-model="listing.propertyContactWebsite" type="text" class="form-control input-md">
-                    </li>
+                <li class="list-group-item">
+                  <h4 class="inline-header">Website:</h4>
+                  <span ng-hide="editing">{{listing.propertyContactWebsite}}</span>
+                  <input ng-show="editing" ng-model="listing.propertyContactWebsite" type="text" class="form-control input-md">
+                </li>
 
-                  </ul>
-                </div>
-              </div>
-
-              <div class='panel-footer'>
-                <div class='panel-footer'>
-                  <button class='btn btn-danger' ng-click="listingsIndexCtrl.deleteListing(listing)">Remove Listing</button>
-                  <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Update Listing</button>
-                  <button class='btn btn-success' ng-show="editing" ng-click="listingsIndexCtrl.editListing(listing); editing = false">Save Changes</button>
-                </div>
-              </div>
+              </ul>
             </div>
           </div>
+
+          <div class="panel-footer">
+            <div class="panel-footer">
+              <button class="btn btn-danger" ng-click="listingsIndexCtrl.deleteListing(listing)">Remove Listing</button>
+              <button class="btn btn-info" ng-hide="editing" ng-click="editing = true">Update Listing</button>
+              <button class="btn btn-success" ng-show="editing" ng-click="listingsIndexCtrl.editListing(listing); editing = false">Save Changes</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
+
 </div>

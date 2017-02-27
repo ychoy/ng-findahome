@@ -15,6 +15,7 @@ function config(   $routeProvider,  $locationProvider   ) {
       controllerAs: 'listingsIndexCtrl',
       controller: 'ListingsIndexController'
     })
+ 
 
     $locationProvider.html5Mode({
     enabled: true,
