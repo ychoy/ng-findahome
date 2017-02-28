@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/ng-findahome");
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/ng-findahome");
 
 var Listing = require('./listing');
 
